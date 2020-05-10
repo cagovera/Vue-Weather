@@ -1,5 +1,5 @@
 <template>
-  <div id="app" :class="typeof weather.main != 'undefined' && weather.main.temp > 16 ? 'warm' : ''">
+  <div id="app" :class="typeof weather.main != 'undefined' && weather.weather[0].main == 'Clouds' ? 'Clouds' : '' || typeof weather.main != 'undefined' && weather.weather[0].main == 'Clear' ? 'Clear' : '' || typeof weather.main != 'undefined' && weather.weather[0].main == 'Rain' ? 'Rain' : ''">
     <main>
       <div class="search-box">
         <input 
@@ -73,16 +73,35 @@ export default {
 body {
   font-family: 'montserrat', sans-serif;
 }
-
 html {
+  overflow: hidden;
+}
+#app {
   background: url('assets/img/weather.jpg');
   background-size: 100% 100%;
   background-repeat: no-repeat;
   height: 100vh;
   width: 100%;
-  overflow: hidden;
+  transition: 0.4s;
 }
-
+#app.Clouds {
+  background: url('assets/img/clouds.jpg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  transition: 0.4s;
+}
+#app.Clear {
+  background: url('assets/img/clear.jpg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  transition: 0.4s;
+}
+#app.Rain {
+  background: url('assets/img/rain.jpg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  transition: 0.4s;
+}
 main {
   min-height: 100vh;
   padding: 25px;
